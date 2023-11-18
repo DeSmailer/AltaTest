@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,13 @@ public class CheckerOfPathPassability : MonoBehaviour
 
     [SerializeField] private BoxCollider myCollider;
     [SerializeField] private float deleteMe;
+
+    public Action OnNoObstacles;
+
+    public void Initialize()
+    {
+        Check();
+    }
 
     private void Check()
     {
@@ -31,6 +38,11 @@ public class CheckerOfPathPassability : MonoBehaviour
     {
         obstacle.OnDie -= OnObstacleDieHandler;
         _obstacles.Remove(obstacle);
+
+        if (_obstacles.Count <= 0)
+        {
+            OnNoObstacles?.Invoke();
+        }
     }
 
     private void OnDrawGizmos()
@@ -49,7 +61,7 @@ public class CheckerOfPathPassability : MonoBehaviour
         foreach (Obstacle obstacle in _obstacles)
         {
             obstacle.OnDie -= OnObstacleDieHandler;
-            _obstacles.Remove(obstacle);
         }
+        _obstacles.Clear();
     }
 }

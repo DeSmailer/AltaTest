@@ -20,8 +20,8 @@ public class ProjectileSpawner : MonoBehaviour
         Vector3 _spawnPosition = new Vector3(0, transform.position.y, transform.position.z + _playerBallData.Radius + _spawnPositionOffsetZ);
         Projectile projectile = Instantiate(_projectilePrefab, _spawnPosition, Quaternion.identity);
 
-        projectile.Initialize(_inputSystem);
         _volumeRedistributor.Initialize(projectile.BallData);
+        projectile.Initialize(_inputSystem);
     }
 
     private void OnDestroy()

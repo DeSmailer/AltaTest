@@ -4,11 +4,12 @@ public class SizeController : MonoBehaviour
 {
     [SerializeField] private BallData _ballData;
 
-    private void Start()
+    public void Initialize()
     {
+        Resize();
         _ballData.OnRadiusChange += Resize;
     }
-
+    
     public void Resize()
     {
         float radius = _ballData.Radius;

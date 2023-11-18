@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9959f5e1ffd6c9b4ba01515b66b14b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sizeController: {fileID: 3229518414951992200}
 --- !u!114 &3809817984772568138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,10 +163,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputSystem: {fileID: 0}
+  _playerBallData: {fileID: 3809817984772568138}
   _projectilePrefab: {fileID: 7341269472301964648, guid: 9827210bc52b7af4d879b34472b7305f,
     type: 3}
-  _spawnPosition: {fileID: 0}
-  _volumeRedistributor: {fileID: 0}
+  _spawnPositionOffsetZ: 0.17
+  _volumeRedistributor: {fileID: 760018583090909060}
 --- !u!114 &760018583090909060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputSystem: {fileID: 0}
-  _playerData: {fileID: 0}
+  _playerData: {fileID: 3809817984772568138}
   _projectileData: {fileID: 0}
-  _power: 0
+  _power: 0.5
+  _initialTransmittedVolume: 0.3
   _redistribute: 0

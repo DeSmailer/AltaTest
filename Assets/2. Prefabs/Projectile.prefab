@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3639502851675336007}
   - component: {fileID: 8846962024501834899}
   - component: {fileID: 2957007887186148466}
+  - component: {fileID: 3710614575905274814}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -124,6 +125,7 @@ MonoBehaviour:
   _inputSystem: {fileID: 0}
   _projectileMovement: {fileID: 3639502851675336007}
   _ballData: {fileID: 8846962024501834899}
+  _sizeController: {fileID: 2957007887186148466}
 --- !u!114 &3639502851675336007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _canMove: 0
+  _rotator: {fileID: 3710614575905274814}
 --- !u!114 &8846962024501834899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +168,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ballData: {fileID: 8846962024501834899}
+--- !u!114 &3710614575905274814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849751889701861503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6d4decff1ea8143aa739a0cc70d2a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
+  _canRotate: 0
