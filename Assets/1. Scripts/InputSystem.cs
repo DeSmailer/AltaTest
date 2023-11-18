@@ -1,18 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class InputSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Action OnTouchBegan;
+    public Action OnTouchEnded;
 
-    // Update is called once per frame
     void Update()
     {
-        
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+        {
+            Debug.Log("OnTouchBegan");
+            OnTouchBegan?.Invoke();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            Debug.Log("OnTouchEnded");
+            OnTouchEnded?.Invoke();
+        }
+#else
+    if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                Debug.Log("OnTouchBegan");
+                OnTouchBegan?.Invoke();
+            }
+
+            if (touch.phase == TouchPhase.Ended)
+            {
+                Debug.Log("OnTouchEnded");
+                OnTouchEnded?.Invoke();
+            }
+        }
+#endif
+
     }
 }

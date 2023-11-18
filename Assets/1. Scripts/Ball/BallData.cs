@@ -6,8 +6,6 @@ public class BallData : MonoBehaviour
     [SerializeField] private float _volume;
     [SerializeField] private float _radius;
 
-    [SerializeField] private SizeController _sizeController ;
-
     [SerializeField] public Action OnRadiusChange;
     [SerializeField] public Action OnVolumeChange;
 
