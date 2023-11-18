@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 3013219934888542112}
   - component: {fileID: 4735480861210555729}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Checker Of Path Passability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
