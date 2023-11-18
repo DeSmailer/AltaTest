@@ -168,6 +168,7 @@ MonoBehaviour:
     type: 3}
   _spawnPositionOffsetZ: 0.17
   _volumeRedistributor: {fileID: 760018583090909060}
+  _projectiles: []
 --- !u!114 &760018583090909060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,5 +185,5 @@ MonoBehaviour:
   _playerData: {fileID: 3809817984772568138}
   _projectileData: {fileID: 0}
   _power: 0.5
-  _initialTransmittedVolume: 0.3
+  _initialTransmittedVolume: 0.1
   _redistribute: 0

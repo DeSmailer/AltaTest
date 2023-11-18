@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileSpawner : MonoBehaviour
@@ -10,6 +11,8 @@ public class ProjectileSpawner : MonoBehaviour
 
     [SerializeField] private VolumeRedistributor _volumeRedistributor;
 
+    [SerializeField] private List<Projectile> _projectiles;
+
     private void Start()
     {
         _inputSystem.OnTouchBegan += Spawn;
@@ -20,12 +23,31 @@ public class ProjectileSpawner : MonoBehaviour
         Vector3 _spawnPosition = new Vector3(0, transform.position.y, transform.position.z + _playerBallData.Radius + _spawnPositionOffsetZ);
         Projectile projectile = Instantiate(_projectilePrefab, _spawnPosition, Quaternion.identity);
 
+        projectile.OnProjectileDestroy += OnProjectileDestroyHandler;
+        _projectiles.Add(projectile);
+
         _volumeRedistributor.Initialize(projectile.BallData);
         projectile.Initialize(_inputSystem);
     }
 
+    private void OnProjectileDestroyHandler(Projectile projectile)
+    {
+        projectile.OnProjectileDestroy -= OnProjectileDestroyHandler;
+    }
+
     private void OnDestroy()
     {
+        //for (int i = 0; i < _projectiles.Count; i++)
+        //{
+
+        //}
+        foreach (Projectile projectile in _projectiles)
+        {
+            projectile.OnProjectileDestroy -= OnProjectileDestroyHandler;
+            projectile.Destroy();
+        }
+        _projectiles.Clear();
+
         _inputSystem.OnTouchBegan -= Spawn;
     }
 

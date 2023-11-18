@@ -14,7 +14,6 @@ public class BallData : MonoBehaviour
         get { return _volume; }
         set
         {
-            Debug.Log("_volume " + _volume);
             _volume = value;
             Radius = GetRadiusByFormula();
             OnVolumeChange?.Invoke();
@@ -26,7 +25,6 @@ public class BallData : MonoBehaviour
         get { return _radius; }
         set
         {
-            Debug.Log("_radius " + _radius);
             _radius = value;
             OnRadiusChange?.Invoke();
         }
