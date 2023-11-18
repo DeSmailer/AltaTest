@@ -37,10 +37,6 @@ public class ProjectileSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        //for (int i = 0; i < _projectiles.Count; i++)
-        //{
-
-        //}
         foreach (Projectile projectile in _projectiles)
         {
             projectile.OnProjectileDestroy -= OnProjectileDestroyHandler;
