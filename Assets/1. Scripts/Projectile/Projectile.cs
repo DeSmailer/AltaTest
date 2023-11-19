@@ -8,13 +8,23 @@ public class Projectile : MonoBehaviour
     [SerializeField] private BallData _ballData;
     [SerializeField] private SizeController _sizeController;
 
+    [SerializeField] private float _sizeCoefficient;
+    [SerializeField] private Flattener _flattener;
+
     public BallData BallData => _ballData;
 
     public Action<Projectile> OnProjectileDestroy;
 
+    public void Initialize(InputSystem inputSystem)
+    {
+        _sizeController.Initialize();
+        _inputSystem = inputSystem;
+        _inputSystem.OnTouchEnded += OnTouchEndedHandler;
+    }
+
     private void TryDestroyObstacle()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _ballData.Radius * 2);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _ballData.Radius * _sizeCoefficient);
 
         int countOfObstacle = 0;
 
@@ -25,20 +35,14 @@ public class Projectile : MonoBehaviour
             {
                 countOfObstacle++;
 
+                _projectileMovement.StopMove();
                 obstacle.Infect();
             }
         }
         if (countOfObstacle > 0)
         {
-            Destroy();
+            _flattener.FlattenOut(_sizeCoefficient, Destroy);
         }
-    }
-
-    public void Initialize(InputSystem inputSystem)
-    {
-        _sizeController.Initialize();
-        _inputSystem = inputSystem;
-        _inputSystem.OnTouchEnded += OnTouchEndedHandler;
     }
 
     private void OnTouchEndedHandler()

@@ -27,4 +27,9 @@ public class ProjectileMovement : MonoBehaviour
         }
         _rotator.StopRotate();
     }
+
+    public void StopMove()
+    {
+        _canMove = false;
+    }
 }

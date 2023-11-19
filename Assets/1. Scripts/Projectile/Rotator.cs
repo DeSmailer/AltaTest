@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private bool _canRotate = false;
+    private float _speed;
+    private bool _canRotate = false;
 
     public void StartRotate(float speed)
     {

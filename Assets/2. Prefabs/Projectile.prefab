@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8846962024501834899}
   - component: {fileID: 2957007887186148466}
   - component: {fileID: 3710614575905274814}
-  - component: {fileID: 4113523390290299886}
+  - component: {fileID: 4505413351651376326}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -127,6 +127,8 @@ MonoBehaviour:
   _projectileMovement: {fileID: 3639502851675336007}
   _ballData: {fileID: 8846962024501834899}
   _sizeController: {fileID: 2957007887186148466}
+  _sizeCoefficient: 2
+  _flattener: {fileID: 4505413351651376326}
 --- !u!114 &3639502851675336007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,32 +183,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6d4decff1ea8143aa739a0cc70d2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
-  _canRotate: 0
---- !u!54 &4113523390290299886
-Rigidbody:
+--- !u!114 &4505413351651376326
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5849751889701861503}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c906dcb8ac164e40b0df42c629531b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.5
