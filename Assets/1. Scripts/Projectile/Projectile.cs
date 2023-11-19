@@ -25,11 +25,9 @@ public class Projectile : MonoBehaviour
             {
                 countOfObstacle++;
 
-                Debug.Log("Infect");
                 obstacle.Infect();
             }
         }
-        Debug.Log("countOfObstacle " + countOfObstacle);
         if (countOfObstacle > 0)
         {
             Destroy();
@@ -52,6 +50,8 @@ public class Projectile : MonoBehaviour
     public void Destroy()
     {
         Debug.Log("Destroy");
+        OnProjectileDestroy?.Invoke(this);
+        _inputSystem.OnTouchEnded -= OnTouchEndedHandler;
         Destroy(gameObject);
     }
 
@@ -59,11 +59,5 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log("OnTriggerEnter");
         TryDestroyObstacle();
-    }
-
-    private void OnDestroy()
-    {
-        OnProjectileDestroy?.Invoke(this);
-        _inputSystem.OnTouchEnded -= OnTouchEndedHandler;
     }
 }

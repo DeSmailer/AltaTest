@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d6193bb7125be42b289198ddc0d4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayBeforeDeath: 0
+  _delayBeforeDeath: 1
 --- !u!114 &19245101755660333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,4 +159,5 @@ MonoBehaviour:
   _obstacle: {fileID: 233208865960582421}
   _cone: {fileID: 321424389843401251}
   _infectMaterial: {fileID: 2100000, guid: 8a776fb59a5f27041b1b9b081cb5cd26, type: 2}
-  _boomVfxPrefab: {fileID: 0}
+  _boomVfxPrefab: {fileID: 6545376620748612817, guid: d86a73e34f31fb54e963419a01b08e28,
+    type: 3}

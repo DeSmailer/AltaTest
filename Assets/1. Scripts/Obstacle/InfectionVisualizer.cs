@@ -26,6 +26,7 @@ public class InfectionVisualizer : MonoBehaviour
     private void OnDieHandler(Obstacle obstacle)
     {
         _obstacle.OnDie -= OnDieHandler;
+        if (!gameObject.scene.isLoaded) return;
         Instantiate(_boomVfxPrefab, transform.position, Quaternion.identity);
     }
 

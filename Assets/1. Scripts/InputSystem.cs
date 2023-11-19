@@ -12,13 +12,11 @@ public class InputSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
 
         {
-            Debug.Log("OnTouchBegan");
             OnTouchBegan?.Invoke();
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            Debug.Log("OnTouchEnded");
             OnTouchEnded?.Invoke();
         }
 #else

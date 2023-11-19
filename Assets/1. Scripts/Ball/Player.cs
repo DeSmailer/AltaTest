@@ -4,9 +4,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private SizeController _sizeController;
 
-    void Start()
+    public void Initialize()
     {
         _sizeController.Initialize();
     }
-
 }

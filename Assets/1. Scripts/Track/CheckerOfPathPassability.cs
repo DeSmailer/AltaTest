@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckerOfPathPassability : MonoBehaviour
 {
-    [SerializeField] private List<Obstacle> _obstacles;
+    [SerializeField] private List<Obstacle> _obstacles = new List<Obstacle>();
 
     [SerializeField] private BoxCollider myCollider;
 
@@ -12,20 +12,27 @@ public class CheckerOfPathPassability : MonoBehaviour
 
     public void Initialize()
     {
+        Debug.Log("Initialize");
         Check();
     }
 
-    private void Check()
+    public void Check()
     {
+        Debug.Log("Check");
         Collider[] colliders = Physics.OverlapBox(myCollider.bounds.center, myCollider.bounds.size);
+        Debug.Log(myCollider.bounds.size);
 
         foreach (Collider collider in colliders)
         {
+            Debug.Log("++");
             Obstacle obstacle = collider.GetComponent<Obstacle>();
             if (obstacle != null)
             {
+                Debug.Log("obstacle != null");
+                Debug.Log("obstacle.name " + obstacle.name);
                 if (!_obstacles.Contains(obstacle))
                 {
+                    Debug.Log("Add(obstacle)");
                     _obstacles.Add(obstacle);
                     obstacle.OnDie += OnObstacleDieHandler;
                 }
@@ -35,9 +42,14 @@ public class CheckerOfPathPassability : MonoBehaviour
 
     private void OnObstacleDieHandler(Obstacle obstacle)
     {
-        obstacle.OnDie -= OnObstacleDieHandler;
-        _obstacles.Remove(obstacle);
+        Debug.Log("OnObstacleDieHandler " + obstacle.name);
+        //obstacle.OnDie -= OnObstacleDieHandler;
+        //_obstacles.Remove(obstacle);
 
+        ClearList();
+        Check();
+
+        Debug.Log("_obstacles.Count " + _obstacles.Count);
         if (_obstacles.Count <= 0)
         {
             OnNoObstacles?.Invoke();
@@ -50,17 +62,24 @@ public class CheckerOfPathPassability : MonoBehaviour
         Gizmos.DrawWireCube(myCollider.bounds.center, myCollider.bounds.size);
     }
 
-    private void OnValidate()
+    private void ClearList()
     {
-        Check();
-    }
-
-    private void OnDestroy()
-    {
+        Debug.Log("ClearList");
         foreach (Obstacle obstacle in _obstacles)
         {
             obstacle.OnDie -= OnObstacleDieHandler;
         }
+
         _obstacles.Clear();
+    }
+
+    //private void OnValidate()
+    //{
+    //    Check();
+    //}
+
+    private void OnDestroy()
+    {
+        ClearList();
     }
 }

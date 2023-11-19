@@ -33,6 +33,7 @@ public class ProjectileSpawner : MonoBehaviour
     private void OnProjectileDestroyHandler(Projectile projectile)
     {
         projectile.OnProjectileDestroy -= OnProjectileDestroyHandler;
+        _projectiles.Remove(projectile);
     }
 
     private void OnDestroy()
