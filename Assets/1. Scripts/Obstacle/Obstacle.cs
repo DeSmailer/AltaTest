@@ -10,7 +10,6 @@ public class Obstacle : MonoBehaviour
 
     public void Infect()
     {
-        OnDie?.Invoke(this);
         OnInfect?.Invoke(this);
         Destroy(gameObject, _delayBeforeDeath);
     }
