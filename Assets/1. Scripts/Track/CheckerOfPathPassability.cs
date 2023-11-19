@@ -7,7 +7,6 @@ public class CheckerOfPathPassability : MonoBehaviour
     [SerializeField] private List<Obstacle> _obstacles;
 
     [SerializeField] private BoxCollider myCollider;
-    [SerializeField] private float deleteMe;
 
     public Action OnNoObstacles;
 
