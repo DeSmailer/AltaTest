@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 321424389843401251}
   - component: {fileID: 7570759326561637272}
   - component: {fileID: 233208865960582421}
+  - component: {fileID: 19245101755660333}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &595291298441973372
 Transform:
@@ -142,3 +143,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d6193bb7125be42b289198ddc0d4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _delayBeforeDeath: 0
+--- !u!114 &19245101755660333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339679249867391893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774cbe85cfff2cd45977a08506ddd1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obstacle: {fileID: 233208865960582421}
+  _cone: {fileID: 321424389843401251}
+  _infectMaterial: {fileID: 2100000, guid: 8a776fb59a5f27041b1b9b081cb5cd26, type: 2}
+  _boomVfxPrefab: {fileID: 0}
