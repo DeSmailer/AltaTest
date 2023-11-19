@@ -22,29 +22,6 @@ public class Projectile : MonoBehaviour
         _inputSystem.OnTouchEnded += OnTouchEndedHandler;
     }
 
-    private void TryDestroyObstacle()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _ballData.Radius * _sizeCoefficient);
-
-        int countOfObstacle = 0;
-
-        foreach (Collider collider in colliders)
-        {
-            Obstacle obstacle = collider.GetComponent<Obstacle>();
-            if (obstacle != null)
-            {
-                countOfObstacle++;
-
-                _projectileMovement.StopMove();
-                obstacle.Infect();
-            }
-        }
-        if (countOfObstacle > 0)
-        {
-            _flattener.FlattenOut(_sizeCoefficient, Destroy);
-        }
-    }
-
     private void OnTouchEndedHandler()
     {
         _projectileMovement.StartMove();
@@ -62,6 +39,13 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("OnTriggerEnter");
-        TryDestroyObstacle();
+
+        Obstacle obstacle = other.GetComponent<Obstacle>();
+        if (obstacle != null)
+        {
+            _flattener.FlattenOut(_sizeCoefficient, Destroy);
+            _projectileMovement.StopMove();
+            obstacle.Infect();
+        }
     }
 }
