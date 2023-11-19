@@ -13,15 +13,12 @@ public class Track : MonoBehaviour
     public void Initialize()
     {
         Resize();
-        //_checker.Initialize();
     }
 
     public void Resize()
     {
         float width = _ballData.Radius / 10;
         transform.localScale = new Vector3(width, transform.localScale.y, transform.localScale.z);
-
-        //_checker.Check();
     }
 
     private void OnDestroy()

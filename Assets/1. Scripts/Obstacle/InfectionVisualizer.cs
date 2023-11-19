@@ -1,6 +1,4 @@
 using KevinCastejon.ConeMesh;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InfectionVisualizer : MonoBehaviour
@@ -9,7 +7,8 @@ public class InfectionVisualizer : MonoBehaviour
     [SerializeField] private Cone _cone;
 
     [SerializeField] private Material _infectMaterial;
-    [SerializeField] private GameObject _boomVfxPrefab;
+    [SerializeField] private GameObject _infectionVfxPrefab;
+    [SerializeField] private GameObject _destructionVfxPrefab;
 
     private void Start()
     {
@@ -21,13 +20,18 @@ public class InfectionVisualizer : MonoBehaviour
     {
         _obstacle.OnInfect -= OnInfectHandler;
         _cone.Material = _infectMaterial;
+
+        Instantiate(_infectionVfxPrefab, transform.position, Quaternion.identity);
     }
 
     private void OnDieHandler(Obstacle obstacle)
     {
         _obstacle.OnDie -= OnDieHandler;
-        if (!gameObject.scene.isLoaded) return;
-        Instantiate(_boomVfxPrefab, transform.position, Quaternion.identity);
+
+        if (!gameObject.scene.isLoaded)
+            return;
+
+        Instantiate(_destructionVfxPrefab, transform.position, Quaternion.identity);
     }
 
     private void OnDestroy()

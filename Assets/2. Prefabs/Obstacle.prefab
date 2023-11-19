@@ -160,7 +160,9 @@ MonoBehaviour:
   _obstacle: {fileID: 233208865960582421}
   _cone: {fileID: 321424389843401251}
   _infectMaterial: {fileID: 2100000, guid: 8a776fb59a5f27041b1b9b081cb5cd26, type: 2}
-  _boomVfxPrefab: {fileID: 6545376620748612817, guid: d86a73e34f31fb54e963419a01b08e28,
+  _infectionVfxPrefab: {fileID: 8420341590855463235, guid: b7bf2885e76396d41a23fd0cc4d8591e,
+    type: 3}
+  _destructionVfxPrefab: {fileID: 6545376620748612817, guid: d86a73e34f31fb54e963419a01b08e28,
     type: 3}
 --- !u!54 &1798781409413845328
 Rigidbody:
