@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1081794977548828341}
   - component: {fileID: 760018583090909060}
   - component: {fileID: 1515695951771784981}
+  - component: {fileID: 3278504866781749860}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -125,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sizeController: {fileID: 3229518414951992200}
   _ballData: {fileID: 3809817984772568138}
+  _playerMovement: {fileID: 3278504866781749860}
   _minimumCriticalVolume: 5
 --- !u!114 &3809817984772568138
 MonoBehaviour:
@@ -205,3 +207,20 @@ MonoBehaviour:
   _player: {fileID: 162822073199058071}
   _playerDeatVfx: {fileID: 7802305634138252397, guid: 91342bbbed5d29c4d9d61d9abe4faac1,
     type: 3}
+--- !u!114 &3278504866781749860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825326784233157110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b9bf1430ec2bd4abfe9290130724ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _finalPosition: {fileID: 0}
+  _ballData: {fileID: 3809817984772568138}
+  _duration: 10
+  _strength: {x: 0, y: 1, z: 0}
+  _vibrato: 2

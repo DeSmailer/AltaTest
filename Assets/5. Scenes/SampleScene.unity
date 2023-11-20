@@ -13887,6 +13887,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 764826411}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &767097204 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8110893219840644064, guid: d8238716600a0004fa6d16c69c54f91f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8208353075632502359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &772353378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35127,6 +35133,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3278504866781749860, guid: dfb0e39a69221394da990b66084d9a32,
+        type: 3}
+      propertyPath: _vibrato
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278504866781749860, guid: dfb0e39a69221394da990b66084d9a32,
+        type: 3}
+      propertyPath: _duration
+      value: 3.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278504866781749860, guid: dfb0e39a69221394da990b66084d9a32,
+        type: 3}
+      propertyPath: _snapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278504866781749860, guid: dfb0e39a69221394da990b66084d9a32,
+        type: 3}
+      propertyPath: _finalPosition
+      value: 
+      objectReference: {fileID: 767097204}
     - target: {fileID: 8754430894771270377, guid: dfb0e39a69221394da990b66084d9a32,
         type: 3}
       propertyPath: m_LocalPosition.x
