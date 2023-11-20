@@ -6,19 +6,24 @@ public class InputSystem : MonoBehaviour
     public Action OnTouchBegan;
     public Action OnTouchEnded;
 
+    [SerializeField] private bool _isUnlocked = true;
+
     void Update()
     {
+        if (_isUnlocked)
+        {
+
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
 
-        {
-            OnTouchBegan?.Invoke();
-        }
+            {
+                OnTouchBegan?.Invoke();
+            }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            OnTouchEnded?.Invoke();
-        }
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                OnTouchEnded?.Invoke();
+            }
 #else
     if (Input.touchCount > 0)
         {
@@ -38,5 +43,17 @@ public class InputSystem : MonoBehaviour
         }
 #endif
 
+        }
+    }
+
+    public void Lock()
+    {
+        _isUnlocked = false;
+        OnTouchEnded?.Invoke();
+    }
+
+    public void Unlock()
+    {
+        _isUnlocked = true;
     }
 }
