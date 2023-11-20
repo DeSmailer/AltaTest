@@ -35,10 +35,14 @@ public class VolumeRedistributor : MonoBehaviour
 
     private IEnumerator Redistribute()
     {
+        float accelerationOverTime = 1;
+
         while (_redistribute)
         {
-            _playerData.Volume -= _power * Time.deltaTime;
-            _projectileData.Volume += _power * Time.deltaTime;
+            _playerData.Volume -= _power * accelerationOverTime * Time.deltaTime;
+            _projectileData.Volume += _power * accelerationOverTime * Time.deltaTime;
+
+            accelerationOverTime += Time.deltaTime / 2;
 
             yield return null;
         }
