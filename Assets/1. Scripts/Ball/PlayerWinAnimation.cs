@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using System;
 
 public class PlayerWinAnimation : MonoBehaviour
 {
@@ -11,23 +12,22 @@ public class PlayerWinAnimation : MonoBehaviour
     [SerializeField] private float _delay;
 
     [SerializeField] private float _duration;
-    [SerializeField] private Vector3 _strength;
-    [SerializeField] private int _vibrato;
-    [SerializeField] private float _randomness;
-    [SerializeField] private bool _snapping = false;
-    [SerializeField] private bool _fadeOut = true;
 
-    public void Play()
+    [SerializeField] private float _strength;
+    [SerializeField] private int _numJumps;
+    [SerializeField] private bool _snapping = false;
+
+    public void Play(Action onEnd)
     {
-        StartCoroutine(PlayAnimation());
+        StartCoroutine(PlayAnimation(onEnd));
     }
 
-    private IEnumerator PlayAnimation()
+    private IEnumerator PlayAnimation(Action onEnd)
     {
         yield return new WaitForSeconds(_delay);
 
-        transform.DOShakePosition(_duration, _strength, _vibrato, _randomness, _snapping, _fadeOut);
-        transform.position = transform.position + new Vector3(0, _ballData.Radius / _vibrato, 0);
-        transform.DOLocalMoveZ(_finalPosition.position.z, _duration);
+        transform.DOJump(_finalPosition.position, _strength, _numJumps, _duration, _snapping);
+        transform.position = transform.position + new Vector3(0, _ballData.Radius / _numJumps, 0);
+        transform.DOLocalMoveZ(_finalPosition.position.z, _duration).OnComplete(() => onEnd?.Invoke()); ;
     }
 }

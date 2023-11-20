@@ -31,7 +31,7 @@ public class WinLoseManager : MonoBehaviour
 
     public void PlayerWinAnimation()
     {
-        _playerWinAnimation.Play();
+        _playerWinAnimation.Play(Win);
         _inputSystem.Lock();
     }
 
