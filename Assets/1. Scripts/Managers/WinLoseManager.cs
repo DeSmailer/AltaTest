@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WinLoseManager : MonoBehaviour
@@ -9,7 +7,10 @@ public class WinLoseManager : MonoBehaviour
     [SerializeField] private GameObject _winWindow;
     [SerializeField] private GameObject _loseWindow;
 
+    [SerializeField] private PlayerWinAnimation _playerWinAnimation;
+
     [SerializeField] private Player _player;
+    [SerializeField] private CheckerOfPathPassability _checkerOfPathPassability;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class WinLoseManager : MonoBehaviour
         _winWindow.SetActive(false);
 
         _player.OnDeath += Lose;
+        _checkerOfPathPassability.OnNoObstacles += PlayerWinAnimation;
     }
 
     public void Win()
@@ -24,6 +26,12 @@ public class WinLoseManager : MonoBehaviour
         _loseWindow.SetActive(false);
         _winWindow.SetActive(true);
 
+        _inputSystem.Lock();
+    }
+
+    public void PlayerWinAnimation()
+    {
+        _playerWinAnimation.Play();
         _inputSystem.Lock();
     }
 
@@ -48,5 +56,11 @@ public class WinLoseManager : MonoBehaviour
     public void Exit()
     {
 
+    }
+
+    private void OnDestroy()
+    {
+        _player.OnDeath -= Lose;
+        _checkerOfPathPassability.OnNoObstacles -= PlayerWinAnimation;
     }
 }

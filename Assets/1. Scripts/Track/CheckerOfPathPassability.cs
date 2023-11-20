@@ -6,8 +6,6 @@ public class CheckerOfPathPassability : MonoBehaviour
 {
     [SerializeField] private List<Obstacle> _obstacles = new List<Obstacle>();
 
-    //[SerializeField] private BoxCollider myCollider;
-
     public Action OnNoObstacles;
 
     private void OnTriggerEnter(Collider other)

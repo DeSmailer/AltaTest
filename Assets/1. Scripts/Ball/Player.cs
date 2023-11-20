@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private SizeController _sizeController;
     [SerializeField] private BallData _ballData;
-    [SerializeField] private PlayerMovement _playerMovement ;
+    //[SerializeField] private CheckerOfPathPassability _checkerOfPathPassability  ;
 
     [SerializeField] private float _minimumCriticalVolume;
 
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _ballData.OnVolumeChange += OnVolumeChangeHandler;
-        _playerMovement.Move();
+        //_checkerOfPathPassability.OnNoObstacles += OnVolumeChangeHandler;
     }
 
     public void Initialize()
