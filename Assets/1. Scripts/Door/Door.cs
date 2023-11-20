@@ -9,7 +9,6 @@ public class Door : MonoBehaviour
 
     private const string _idleAnimation = "IdleDoor";
     private const string _openAnimation = "OpenDoor";
-    //private const string _openedAnimation = "OpenedDoor";
 
     private bool _isOpening = false;
     [SerializeField] private float _openDistance;
@@ -20,7 +19,7 @@ public class Door : MonoBehaviour
         _animator.Play(_idleAnimation);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Vector3.Distance(transform.position, _player.position) <= _openDistance)
         {
