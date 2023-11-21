@@ -5,9 +5,10 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private SizeController _sizeController;
     [SerializeField] private BallData _ballData;
-    //[SerializeField] private CheckerOfPathPassability _checkerOfPathPassability  ;
 
     [SerializeField] private float _minimumCriticalVolume;
+
+    public float MinimumCriticalVolume => _minimumCriticalVolume;
 
     public Action OnInitialize;
     public Action OnDeath;

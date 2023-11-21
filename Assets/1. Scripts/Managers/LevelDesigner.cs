@@ -11,6 +11,7 @@ public class LevelDesigner : MonoBehaviour
     [SerializeField] private SizeController _sizeController;
     [SerializeField] private Transform _playerStartPosition;
     [SerializeField] private Player _player;
+    [SerializeField] private PlayerHPView _playerHPView;
 
     [SerializeField] private WinLoseManager _winLoseManager ;
 
@@ -71,6 +72,8 @@ public class LevelDesigner : MonoBehaviour
         _player.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         _player.Initialize(levelSettings.MinimumCriticalVolume);
         _ballData.Volume = levelSettings.Volume;
+
+        _playerHPView.Initialize();
 
         _sizeController.Resize();
 
