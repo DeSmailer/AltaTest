@@ -36,14 +36,25 @@ public class ProjectileSpawner : MonoBehaviour
         _projectiles.Remove(projectile);
     }
 
+    public void DestroyAllProjectiles()
+    {
+        Debug.Log("DestroyAllProjectiles");
+        for (int i = 0; i < _projectiles.Count; i++)
+        {
+            if (_projectiles[i] != null)
+            {
+                Debug.Log("DestroyAllProjectiles " + i);
+                _projectiles[i].OnProjectileDestroy -= OnProjectileDestroyHandler;
+                _projectiles[i].DestroyProjectile();
+            }
+        }
+
+        _projectiles.Clear();
+    }
+
     private void OnDestroy()
     {
-        foreach (Projectile projectile in _projectiles)
-        {
-            projectile.OnProjectileDestroy -= OnProjectileDestroyHandler;
-            projectile.Destroy();
-        }
-        _projectiles.Clear();
+        DestroyAllProjectiles();
 
         _inputSystem.OnTouchBegan -= Spawn;
     }

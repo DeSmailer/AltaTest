@@ -282,6 +282,7 @@ MonoBehaviour:
   _winLoseManager: {fileID: 137538710}
   _track: {fileID: 293506969}
   _checkerOfPathPassability: {fileID: 754846291}
+  _projectileSpawner: {fileID: 1831499006}
   _obstaclesContainer: {fileID: 1925710779526197449}
   _currentLevel: 1
   _levelSettings:
@@ -2707,6 +2708,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73b9bf1430ec2bd4abfe9290130724ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1831499006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1081794977548828341, guid: dfb0e39a69221394da990b66084d9a32,
+    type: 3}
+  m_PrefabInstance: {fileID: 2836509203434867649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a23de564e467dd479b2ceed8db612c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1883609695

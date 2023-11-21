@@ -13,10 +13,12 @@ public class LevelDesigner : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private PlayerHPView _playerHPView;
 
-    [SerializeField] private WinLoseManager _winLoseManager ;
+    [SerializeField] private WinLoseManager _winLoseManager;
 
     [SerializeField] private Track _track;
     [SerializeField] private CheckerOfPathPassability _checkerOfPathPassability;
+
+    [SerializeField] private ProjectileSpawner _projectileSpawner;
 
     [SerializeField] private ObstaclesContainer _obstaclesContainer;
 
@@ -65,6 +67,8 @@ public class LevelDesigner : MonoBehaviour
         Debug.Log("Lock 2");
 
         _ui.CloseAllWindows();
+
+        _projectileSpawner.DestroyAllProjectiles();
 
         _obstaclesContainer.SetNewObstacles(levelSettings.ObstaclesPrefab, _checkerOfPathPassability.Unlock);
 

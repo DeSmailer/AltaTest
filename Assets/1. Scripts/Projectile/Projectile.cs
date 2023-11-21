@@ -28,12 +28,15 @@ public class Projectile : MonoBehaviour
         _inputSystem.OnTouchEnded -= OnTouchEndedHandler;
     }
 
-    public void Destroy()
+    public void DestroyProjectile()
     {
         Debug.Log("Destroy");
         OnProjectileDestroy?.Invoke(this);
         _inputSystem.OnTouchEnded -= OnTouchEndedHandler;
-        Destroy(gameObject);
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,7 +46,7 @@ public class Projectile : MonoBehaviour
         Obstacle obstacle = other.GetComponent<Obstacle>();
         if (obstacle != null)
         {
-            _flattener.FlattenOut(_sizeCoefficient, Destroy);
+            _flattener.FlattenOut(_sizeCoefficient, DestroyProjectile);
             _projectileMovement.StopMove();
             obstacle.Infect();
         }
@@ -52,7 +55,7 @@ public class Projectile : MonoBehaviour
             LimiterForProjectiles limiter = other.GetComponent<LimiterForProjectiles>();
             if (limiter != null)
             {
-                Destroy(gameObject);
+                DestroyProjectile();
             }
         }
     }
