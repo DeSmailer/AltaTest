@@ -10,6 +10,8 @@ public class WinLoseManager : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private CheckerOfPathPassability _checkerOfPathPassability;
 
+    [SerializeField] private bool _isResultReceived = false;
+
     public Action OnWin;
     public Action OnLose;
 
@@ -21,6 +23,10 @@ public class WinLoseManager : MonoBehaviour
 
     public void PlayPlayerWinAnimation()
     {
+        if (_isResultReceived)
+            return;
+
+        _isResultReceived = true;
         _inputSystem.Lock();
         _playerWinAnimation.Play(Win);
     }
@@ -33,8 +39,17 @@ public class WinLoseManager : MonoBehaviour
 
     public void Lose()
     {
+        if (_isResultReceived)
+            return;
+
+        _isResultReceived = true;
         _inputSystem.Lock();
         OnLose?.Invoke();
+    }
+
+    public void Restart()
+    {
+        _isResultReceived = false;
     }
 
     private void OnDestroy()

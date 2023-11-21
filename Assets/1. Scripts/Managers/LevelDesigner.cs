@@ -12,6 +12,8 @@ public class LevelDesigner : MonoBehaviour
     [SerializeField] private Transform _playerStartPosition;
     [SerializeField] private Player _player;
 
+    [SerializeField] private WinLoseManager _winLoseManager ;
+
     [SerializeField] private Track _track;
     [SerializeField] private CheckerOfPathPassability _checkerOfPathPassability;
 
@@ -73,6 +75,8 @@ public class LevelDesigner : MonoBehaviour
         _sizeController.Resize();
 
         _track.Initialize();
+
+        _winLoseManager.Restart();
 
         _inputSystem.Unlock();
         _checkerOfPathPassability.Unlock();

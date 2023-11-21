@@ -47,5 +47,13 @@ public class Projectile : MonoBehaviour
             _projectileMovement.StopMove();
             obstacle.Infect();
         }
+        else
+        {
+            LimiterForProjectiles limiter = other.GetComponent<LimiterForProjectiles>();
+            if (limiter != null)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
