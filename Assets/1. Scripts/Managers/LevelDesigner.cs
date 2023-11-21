@@ -6,16 +6,19 @@ public class LevelDesigner : MonoBehaviour
     [SerializeField] private InputSystem _inputSystem;
 
     [SerializeField] private UI _ui;
+
     [SerializeField] private BallData _ballData;
     [SerializeField] private SizeController _sizeController;
-    [SerializeField] private Track _track;
+    [SerializeField] private Transform _playerStartPosition;
     [SerializeField] private Player _player;
+
+    [SerializeField] private Track _track;
+    [SerializeField] private CheckerOfPathPassability _checkerOfPathPassability;
+
     [SerializeField] private ObstaclesContainer _obstaclesContainer;
 
     [SerializeField] private int _currentLevel;
     [SerializeField] private List<LevelSettingsScriptableObject> _levelSettings;
-
-    [SerializeField] private Transform _playerStartPosition;
 
     public int CurrentLevel
     {
@@ -54,23 +57,24 @@ public class LevelDesigner : MonoBehaviour
     {
         LevelSettingsScriptableObject levelSettings = _levelSettings[CurrentLevel - 1];
 
+        Debug.Log("Lock 1");
+        _checkerOfPathPassability.Lock();
+        Debug.Log("Lock 2");
+
         _ui.CloseAllWindows();
+
+        _obstaclesContainer.SetNewObstacles(levelSettings.ObstaclesPrefab, _checkerOfPathPassability.Unlock);
 
         _player.gameObject.transform.position = _playerStartPosition.position;
         _player.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-        _ballData.Volume = levelSettings.Volume;
         _player.Initialize(levelSettings.MinimumCriticalVolume);
-
-        _obstaclesContainer.SetNewObstacles(levelSettings.ObstaclesPrefab);
+        _ballData.Volume = levelSettings.Volume;
 
         _sizeController.Resize();
+
         _track.Initialize();
 
         _inputSystem.Unlock();
-    }
-
-    private void OnValidate()
-    {
-
+        _checkerOfPathPassability.Unlock();
     }
 }

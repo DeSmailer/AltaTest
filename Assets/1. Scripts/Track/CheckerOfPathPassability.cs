@@ -6,116 +6,83 @@ public class CheckerOfPathPassability : MonoBehaviour
 {
     [SerializeField] private List<Obstacle> _obstacles = new List<Obstacle>();
 
+    [SerializeField] private bool _isUnlocked = false;
+
     public Action OnNoObstacles;
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("OnTriggerEnter");
         Obstacle obstacle = other.GetComponent<Obstacle>();
         if (obstacle != null)
         {
-            Debug.Log("obstacle != null");
-            Debug.Log("obstacle.name " + obstacle.name);
             if (!_obstacles.Contains(obstacle))
             {
-                Debug.Log("Add(obstacle)");
                 _obstacles.Add(obstacle);
-                obstacle.OnDie += OnObstacleDieHandler;
+                obstacle.OnDeathByProjectile += OnObstacleDeathByProjectileHandler;
+                obstacle.OnDeathByLoadingLevel += OnObstacleDeathByLoadingLevelHandler;
             }
         }
     }
 
-    private void OnObstacleDieHandler(Obstacle obstacle)
+    private void OnObstacleDeathByProjectileHandler(Obstacle obstacle)
     {
-        if (obstacle != null)
+        Debug.Log("OnObstacleDeathByProjectileHandler1");
+        if (_isUnlocked)
         {
-            if (_obstacles.Contains(obstacle))
+            Debug.Log("OnObstacleDeathByProjectileHandler2");
+            if (obstacle != null)
             {
-                Debug.Log("Remove(obstacle)");
-                _obstacles.Remove(obstacle);
-                obstacle.OnDie -= OnObstacleDieHandler;
+                if (_obstacles.Contains(obstacle))
+                {
+                    _obstacles.Remove(obstacle);
+                    obstacle.OnDeathByProjectile -= OnObstacleDeathByProjectileHandler;
+                    obstacle.OnDeathByLoadingLevel -= OnObstacleDeathByLoadingLevelHandler;
+                }
+            }
+
+            if (_obstacles.Count <= 0)
+            {
+                Debug.Log("OnNoObstacles" + 0);
+                OnNoObstacles?.Invoke();
             }
         }
+    }
 
-        Debug.Log("_obstacles.Count " + _obstacles.Count);
-        if (_obstacles.Count <= 0)
+    private void OnObstacleDeathByLoadingLevelHandler(Obstacle obstacle)
+    {
+        Debug.Log("OnObstacleDieHandler");
+        if (_isUnlocked)
         {
-            OnNoObstacles?.Invoke();
+            Debug.Log("OnObstacleDieHandler");
+            if (obstacle != null)
+            {
+                if (_obstacles.Contains(obstacle))
+                {
+                    _obstacles.Remove(obstacle);
+                    obstacle.OnDeathByProjectile -= OnObstacleDeathByProjectileHandler;
+                    obstacle.OnDeathByLoadingLevel -= OnObstacleDeathByLoadingLevelHandler;
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("OnTriggerExit " + other.name);
-
+        Debug.Log("OnTriggerExit");
         Obstacle obstacle = other.GetComponent<Obstacle>();
-        OnObstacleDieHandler(obstacle);
+        OnObstacleDeathByProjectileHandler(obstacle);
     }
-    //public void Initialize()
-    //{
-    //    Debug.Log("Initialize");
-    //    Check();
-    //}
 
-    //public void Check()
-    //{
-    //    Debug.Log("Check");
-    //    Collider[] colliders = Physics.OverlapBox(myCollider.bounds.center, myCollider.bounds.size);
-    //    Debug.Log(myCollider.bounds.size);
+    public void Lock()
+    {
+        Debug.Log("Lock");
+        _isUnlocked = false;
+    }
 
-    //    foreach (Collider collider in colliders)
-    //    {
-    //        Debug.Log("++");
-    //        Obstacle obstacle = collider.GetComponent<Obstacle>();
-    //        if (obstacle != null)
-    //        {
-    //            Debug.Log("obstacle != null");
-    //            Debug.Log("obstacle.name " + obstacle.name);
-    //            if (!_obstacles.Contains(obstacle))
-    //            {
-    //                Debug.Log("Add(obstacle)");
-    //                _obstacles.Add(obstacle);
-    //                obstacle.OnDie += OnObstacleDieHandler;
-    //            }
-    //        }
-    //    }
-    //}
-
-    //private void OnObstacleDieHandler(Obstacle obstacle)
-    //{
-    //    Debug.Log("OnObstacleDieHandler " + obstacle.name);
-    //    //obstacle.OnDie -= OnObstacleDieHandler;
-    //    //_obstacles.Remove(obstacle);
-
-    //    ClearList();
-    //    Check();
-
-    //    Debug.Log("_obstacles.Count " + _obstacles.Count);
-    //    if (_obstacles.Count <= 0)
-    //    {
-    //        OnNoObstacles?.Invoke();
-    //    }
-    //}
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireCube(myCollider.bounds.center, myCollider.bounds.size);
-    //}
-
-    //private void ClearList()
-    //{
-    //    Debug.Log("ClearList");
-    //    foreach (Obstacle obstacle in _obstacles)
-    //    {
-    //        obstacle.OnDie -= OnObstacleDieHandler;
-    //    }
-
-    //    _obstacles.Clear();
-    //}
-
-    //private void OnDestroy()
-    //{
-    //    ClearList();
-    //}
-
+    public void Unlock()
+    {
+        Debug.Log("Unlock");
+        _isUnlocked = true;
+    }
 }
