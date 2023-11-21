@@ -280,6 +280,7 @@ MonoBehaviour:
   _sizeController: {fileID: 698261696}
   _playerStartPosition: {fileID: 1527896101}
   _player: {fileID: 1367739293}
+  _door: {fileID: 767097206}
   _winLoseManager: {fileID: 137538710}
   _track: {fileID: 293506969}
   _checkerOfPathPassability: {fileID: 754846291}
@@ -1692,6 +1693,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8208353075632502359}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &767097206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4608098712478408689, guid: d8238716600a0004fa6d16c69c54f91f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8208353075632502359}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5dff3dd56377f42b15ba417d087dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2578,7 @@ Transform:
   m_GameObject: {fileID: 1438092434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43830395, y: -0.3552704, z: 11.12}
+  m_LocalPosition: {x: -0.43830395, y: -0.3552704, z: 6.93}
   m_LocalScale: {x: 9.48797, y: 6.9267917, z: 0.837244}
   m_ConstrainProportionsScale: 0
   m_Children: []
