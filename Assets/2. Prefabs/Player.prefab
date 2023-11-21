@@ -187,7 +187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSystem: {fileID: 0}
   _playerData: {fileID: 3809817984772568138}
-  _projectileData: {fileID: 0}
   _power: 0.5
   _initialTransmittedVolume: 0.1
   _redistribute: 0
@@ -225,3 +224,4 @@ MonoBehaviour:
   _strength: 1.61
   _numJumps: 6
   _snapping: 0
+  _rotateEndValue: {x: 179, y: 0, z: 0}

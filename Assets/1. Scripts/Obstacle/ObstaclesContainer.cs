@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class ObstaclesContainer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject _obstaclesParent;
 
-    // Update is called once per frame
-    void Update()
+    public void SetNewObstacles(GameObject obstaclesParent)
     {
-        
+        if (_obstaclesParent != null)
+        {
+            Destroy(_obstaclesParent);
+        }
+
+        _obstaclesParent = Instantiate(obstaclesParent, transform.position, Quaternion.identity, transform);
     }
 }

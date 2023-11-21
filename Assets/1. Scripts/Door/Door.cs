@@ -28,7 +28,6 @@ public class Door : MonoBehaviour
                 OpenDoor();
             }
         }
-        Debug.Log(Vector3.Distance(transform.position, _player.position));
     }
 
     private void OpenDoor()

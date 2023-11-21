@@ -7,6 +7,8 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject _winWindow;
     [SerializeField] private GameObject _loseWindow;
 
+    [SerializeField] private LevelDesigner _levelDesigner;
+
     private void Start()
     {
         CloseAllWindows();
@@ -36,11 +38,13 @@ public class UI : MonoBehaviour
     public void NextLevel()
     {
         CloseAllWindows();
+        _levelDesigner.NextLevel();
     }
 
     public void RestartLevel()
     {
         CloseAllWindows();
+        _levelDesigner.Restart();
     }
 
     public void Exit()

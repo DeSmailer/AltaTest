@@ -6,7 +6,7 @@ public class VolumeRedistributor : MonoBehaviour
     [SerializeField] private InputSystem inputSystem;
 
     [SerializeField] private BallData _playerData;
-    [SerializeField] private BallData _projectileData;
+    private BallData _projectileData;
 
     [SerializeField] private float _power;
     [SerializeField] private float _initialTransmittedVolume;

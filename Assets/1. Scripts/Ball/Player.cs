@@ -18,8 +18,9 @@ public class Player : MonoBehaviour
         //_checkerOfPathPassability.OnNoObstacles += OnVolumeChangeHandler;
     }
 
-    public void Initialize()
+    public void Initialize(float minimumCriticalVolume)
     {
+        _minimumCriticalVolume = minimumCriticalVolume;
         _sizeController.Initialize();
         OnInitialize?.Invoke();
     }
