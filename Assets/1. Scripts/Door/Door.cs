@@ -7,8 +7,8 @@ public class Door : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _player;
 
-    private const string _idleAnimation = "IdleDoor";
-    private const string _openAnimation = "OpenDoor";
+    private const string IDLE_ANIMATION = "IdleDoor";
+    private const string OPEN_ANIMATION = "OpenDoor";
 
     private bool _isOpening = false;
     [SerializeField] private float _openDistance;
@@ -32,12 +32,12 @@ public class Door : MonoBehaviour
     private void CloseDoor()
     {
         _isOpening = false;
-        _animator.Play(_idleAnimation);
+        _animator.Play(IDLE_ANIMATION);
     }
 
     private void OpenDoor()
     {
         _isOpening = true;
-        _animator.Play(_openAnimation);
+        _animator.Play(OPEN_ANIMATION);
     }
 }

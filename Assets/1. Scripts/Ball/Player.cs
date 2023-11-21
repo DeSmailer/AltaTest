@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _ballData.OnVolumeChange += OnVolumeChangeHandler;
-        //_checkerOfPathPassability.OnNoObstacles += OnVolumeChangeHandler;
     }
 
     public void Initialize(float minimumCriticalVolume)
