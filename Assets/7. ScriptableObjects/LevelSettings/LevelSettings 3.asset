@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff32d231ee745a34aa2f8421ae79d874, type: 3}
   m_Name: LevelSettings 3
   m_EditorClassIdentifier: 
-  _volume: 5
-  _minimumCriticalVolume: 2
+  _volume: 9
+  _minimumCriticalVolume: 3
   _obstaclesPrefab: {fileID: 1375314044555975480, guid: 7bb6b99136c580e4f8f065640ab99443,
     type: 3}

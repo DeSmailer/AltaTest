@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff32d231ee745a34aa2f8421ae79d874, type: 3}
-  m_Name: LevelSettings 2
+  m_Name: LevelSettings 5
   m_EditorClassIdentifier: 
-  _volume: 70
-  _minimumCriticalVolume: 30
-  _obstaclesPrefab: {fileID: 1057893679783054176, guid: 8299819ed066d8946b950e448a39ced1,
+  _volume: 4
+  _minimumCriticalVolume: 2
+  _obstaclesPrefab: {fileID: 2727685225019260280, guid: 18166fac7b7e7d146b41e1fc4c4b3f9c,
     type: 3}

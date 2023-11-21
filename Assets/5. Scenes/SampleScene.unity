@@ -291,6 +291,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 779df07094c4e8b41a0403b052ed1658, type: 2}
   - {fileID: 11400000, guid: 497c46cbfccde4e47a042060ce0710b9, type: 2}
   - {fileID: 11400000, guid: 254f0910a79dfff4ca9bc79d88d95114, type: 2}
+  - {fileID: 11400000, guid: f0effcbe5f2e3484eacd72298051d448, type: 2}
+  - {fileID: 11400000, guid: e8c4e75f9feaaf548a0bd70ccc870773, type: 2}
 --- !u!114 &137538710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3557,6 +3559,11 @@ PrefabInstance:
       propertyPath: _finalPosition
       value: 
       objectReference: {fileID: 767097204}
+    - target: {fileID: 3809817984772568138, guid: dfb0e39a69221394da990b66084d9a32,
+        type: 3}
+      propertyPath: _volume
+      value: 55.81
+      objectReference: {fileID: 0}
     - target: {fileID: 8754430894771270377, guid: dfb0e39a69221394da990b66084d9a32,
         type: 3}
       propertyPath: m_LocalPosition.x
