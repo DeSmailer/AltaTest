@@ -17,6 +17,8 @@ public class PlayerWinAnimation : MonoBehaviour
     [SerializeField] private int _numJumps;
     [SerializeField] private bool _snapping = false;
 
+    [SerializeField] private Vector3 _rotateEndValue;
+
     public void Play(Action onEnd)
     {
         StartCoroutine(PlayAnimation(onEnd));
@@ -26,8 +28,9 @@ public class PlayerWinAnimation : MonoBehaviour
     {
         yield return new WaitForSeconds(_delay);
 
+        transform.DORotate(_rotateEndValue, _duration);
         transform.DOJump(_finalPosition.position, _strength, _numJumps, _duration, _snapping);
         transform.position = transform.position + new Vector3(0, _ballData.Radius / _numJumps, 0);
-        transform.DOLocalMoveZ(_finalPosition.position.z, _duration).OnComplete(() => onEnd?.Invoke()); ;
+        transform.DOLocalMoveZ(_finalPosition.position.z, _duration).OnComplete(() => onEnd?.Invoke());
     }
 }
