@@ -38,12 +38,10 @@ public class ProjectileSpawner : MonoBehaviour
 
     public void DestroyAllProjectiles()
     {
-        Debug.Log("DestroyAllProjectiles");
         for (int i = 0; i < _projectiles.Count; i++)
         {
             if (_projectiles[i] != null)
             {
-                Debug.Log("DestroyAllProjectiles " + i);
                 _projectiles[i].OnProjectileDestroy -= OnProjectileDestroyHandler;
                 _projectiles[i].DestroyProjectile();
             }

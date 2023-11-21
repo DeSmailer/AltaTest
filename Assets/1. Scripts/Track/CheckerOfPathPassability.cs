@@ -12,7 +12,6 @@ public class CheckerOfPathPassability : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         Obstacle obstacle = other.GetComponent<Obstacle>();
         if (obstacle != null)
         {
@@ -27,10 +26,8 @@ public class CheckerOfPathPassability : MonoBehaviour
 
     private void OnObstacleDeathByProjectileHandler(Obstacle obstacle)
     {
-        Debug.Log("OnObstacleDeathByProjectileHandler1");
         if (_isUnlocked)
         {
-            Debug.Log("OnObstacleDeathByProjectileHandler2");
             if (obstacle != null)
             {
                 if (_obstacles.Contains(obstacle))
@@ -43,7 +40,6 @@ public class CheckerOfPathPassability : MonoBehaviour
 
             if (_obstacles.Count <= 0)
             {
-                Debug.Log("OnNoObstacles" + 0);
                 OnNoObstacles?.Invoke();
             }
         }
@@ -51,10 +47,8 @@ public class CheckerOfPathPassability : MonoBehaviour
 
     private void OnObstacleDeathByLoadingLevelHandler(Obstacle obstacle)
     {
-        Debug.Log("OnObstacleDieHandler");
         if (_isUnlocked)
         {
-            Debug.Log("OnObstacleDieHandler");
             if (obstacle != null)
             {
                 if (_obstacles.Contains(obstacle))
@@ -69,20 +63,17 @@ public class CheckerOfPathPassability : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("OnTriggerExit");
         Obstacle obstacle = other.GetComponent<Obstacle>();
         OnObstacleDeathByProjectileHandler(obstacle);
     }
 
     public void Lock()
     {
-        Debug.Log("Lock");
         _isUnlocked = false;
     }
 
     public void Unlock()
     {
-        Debug.Log("Unlock");
         _isUnlocked = true;
     }
 }

@@ -30,7 +30,6 @@ public class Projectile : MonoBehaviour
 
     public void DestroyProjectile()
     {
-        Debug.Log("Destroy");
         OnProjectileDestroy?.Invoke(this);
         _inputSystem.OnTouchEnded -= OnTouchEndedHandler;
         if (gameObject != null)
@@ -41,8 +40,6 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
-
         Obstacle obstacle = other.GetComponent<Obstacle>();
         if (obstacle != null)
         {

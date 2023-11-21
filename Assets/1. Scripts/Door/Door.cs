@@ -15,8 +15,7 @@ public class Door : MonoBehaviour
 
     public void Initialize()
     {
-        _isOpening = false;
-        _animator.Play(_idleAnimation);
+        CloseDoor();
     }
 
     private void FixedUpdate()
@@ -28,6 +27,12 @@ public class Door : MonoBehaviour
                 OpenDoor();
             }
         }
+    }
+
+    private void CloseDoor()
+    {
+        _isOpening = false;
+        _animator.Play(_idleAnimation);
     }
 
     private void OpenDoor()

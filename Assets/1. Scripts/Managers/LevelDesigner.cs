@@ -6,12 +6,15 @@ public class LevelDesigner : MonoBehaviour
     [SerializeField] private InputSystem _inputSystem;
 
     [SerializeField] private UI _ui;
+    [SerializeField] private PlayerHPView _playerHPView;
+    [SerializeField] private LevelNumberSetter _levelNumberSetter;
 
     [SerializeField] private BallData _ballData;
     [SerializeField] private SizeController _sizeController;
     [SerializeField] private Transform _playerStartPosition;
     [SerializeField] private Player _player;
-    [SerializeField] private PlayerHPView _playerHPView;
+
+    [SerializeField] private Door _door ;
 
     [SerializeField] private WinLoseManager _winLoseManager;
 
@@ -62,11 +65,10 @@ public class LevelDesigner : MonoBehaviour
     {
         LevelSettingsScriptableObject levelSettings = _levelSettings[CurrentLevel - 1];
 
-        Debug.Log("Lock 1");
         _checkerOfPathPassability.Lock();
-        Debug.Log("Lock 2");
 
         _ui.CloseAllWindows();
+        _levelNumberSetter.SetText(CurrentLevel);
 
         _projectileSpawner.DestroyAllProjectiles();
 
@@ -76,6 +78,8 @@ public class LevelDesigner : MonoBehaviour
         _player.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
         _player.Initialize(levelSettings.MinimumCriticalVolume);
         _ballData.Volume = levelSettings.Volume;
+
+        _door.Initialize();
 
         _playerHPView.Initialize();
 
